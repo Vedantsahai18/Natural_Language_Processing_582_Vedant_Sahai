@@ -17,5 +17,5 @@ Email : vzs5356@psu.edu
 
 NOTE: Due to its large size, the nohup.out and vectors.bin file can be viewed and downloaded from the given link below
 
-[Files](https://pennstateoffice365-my.sharepoint.com/:f:/r/personal/vzs5356_psu_edu/Documents/NLP_Assignment_1_VS?csf=1&web=1&e=gbodgA)
+[Files](https://pennstateoffice365-my.sharepoint.com/:f:/r/personal/vzs5356_psu_edu/Documents/NLP_Assignment_1_VS?csf=1&web=1&e=gbodgA](https://pennstateoffice365-my.sharepoint.com/:f:/g/personal/vzs5356_psu_edu/EpQ-VgRdiNhMna9qEyhXjxkBjnivaj3WeGjqWxty7xAeSA?e=iICscT)
 
