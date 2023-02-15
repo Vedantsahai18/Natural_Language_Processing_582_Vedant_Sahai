@@ -65,6 +65,7 @@ This cycle goes on until the whole table has been filled.
 
 The end product is a table that contains a randomly chosen subset of words from the training corpus, 
 with more frequent words having a higher likelihood of being chosen.
+
 */
 
 void InitUnigramTable() {
@@ -476,7 +477,7 @@ void *TrainModelThread(void *id) {
 
     /*
 
-    The CBOW architecture works in a following manner:
+    The CBOW code works in a following manner:
 
     1. Input to Hidden Layer Computation (in -> hidden) -
     A sliding window around the current word is used as an input to the network. 
