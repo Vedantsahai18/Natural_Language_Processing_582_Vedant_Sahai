@@ -374,7 +374,7 @@ Here is an outline of what the code does:
 
 4. If negative sampling is utilized ('negative' is greater than 0), 'syn1neg' is allocated and initialized to zero for use in negative sampling optimization.
 
-5. The weight matrix syn0 is initialized with random values. layer1_size is the size of the secret layer.
+5. The weight matrix syn0 is initialized with random values. layer1_size is the size of the hidden layer.
 
 6. Function CreateBinaryTree() is used to make the Huffman binary tree for use in hierarchical softmax optimization.
 
@@ -478,19 +478,19 @@ void *TrainModelThread(void *id) {
 
     The CBOW architecture works in a following manner:
 
-    1. Input to Hidden Layer Computation-
+    1. Input to Hidden Layer Computation (in -> hidden) -
     A sliding window around the current word is used as an input to the network. 
     Representation of each of these words is added to a hidden layer and the average of the representations is taken.
     
-    2. Hidden To Output Layer Computation using Hierarchical Softmax-
+    2. Hidden To Output Layer Computation using Hierarchical Softmax (hidden -> output)-
     For every word in the vocab, the dot product is taken between the hidden layer representation and the corresponding weights to calculate the output layer. 
     The result is transformed using an exponential function to produce a probability value, which is compared to the actual label (either 1 if the word is the target word or 0 if it's a negative sample)  to calculate the error gradient. Finally, we then update the weights based on the above-calculated layer.
     
-    3. Hidden To Output Layer Computation using Negative Sampling-
+    3. Hidden To Output Layer Computation using Negative Sampling (NEGATIVE SAMPLING)-
     For negative sampling, a random word is selected and used to calculate the dot product with the hidden layer representation. 
     The result is transformed to produce a probability value, and the error gradient is calculated.  The weights between the hidden layer and the output layer for the negative sample are then updated based on this error.
 
-    4. Hidden To Input Layer Computation-
+    4. Hidden To Input Layer Computation (hidden -> in)-
     This layer makes sure that the backpropagation of the hidden layer error is systematically updated to the input layer 
     which in return updates the representations of the words in the input window.
 
@@ -654,8 +654,8 @@ The trained word embeddings are saved to the output file specified by the output
 The embeddings can be saved in either binary or text format, as specified by the binary variable. 
 
 NOTE
-If classes is set to 0, the raw word vectors are saved, otherwise, K-means clustering is applied 
-to the embeddings to divide the words into a given no. of classes. 
+If classes variable is 0, then the raw word vectors are saved, otherwise, K-means clustering is applied 
+to the embeddings to divide the words into the given no. of classes. 
 
 */
 
