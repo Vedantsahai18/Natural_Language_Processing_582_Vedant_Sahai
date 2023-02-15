@@ -1,0 +1,155 @@
+(base) vedantsahai18@Vedantsahai18:~/word2vec/trunk$ cat nohup.out
+make: Nothing to be done for 'all'.
+word2vec.c: In function ‘ReadVocab’:
+word2vec.c:344:5: warning: ignoring return value of ‘fscanf’, declared with attribute warn_unused_result [-Wunused-result]
+  344 |     fscanf(fin, "%lld%c", &vocab[a].cn, &c);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Starting training using file data.txt
+Vocab size: 219732
+Words in train file: 820446272
+Alpha: 0.000005  Progress: 100.00%  Words/thread/sec: 119.69k
+real    436m28.368s
+user    1700m10.296s
+sys     15m39.527s
+(base) vedantsahai18@Vedantsahai18:~/word2vec/trunk$ ./demo-word.sh
+make: Nothing to be done for 'all'.
+Enter word or sentence (EXIT to break): cat
+
+Word: cat  Position in vocabulary: 4488
+
+                                              Word       Cosine distance
+------------------------------------------------------------------------
+                                              cats              0.668255
+                                               dog              0.642821
+                                            feline              0.570733
+                                             tabby              0.551473
+                                            kitten              0.538100
+                                            rabbit              0.508105
+                                             puppy              0.504042
+                                            monkey              0.495756
+                                               pet              0.492455
+                                              dogs              0.490993
+                                           kittens              0.471829
+                                              paws              0.460982
+                                          labrador              0.456766
+                                               pig              0.450337
+                                             furry              0.450216
+                                           terrier              0.449834
+                                            animal              0.445429
+                                         retriever              0.443946
+                                             snake              0.442753
+                                               rat              0.439905
+                                             pooch              0.438411
+                                           felines              0.437813
+                                          creature              0.436021
+                                           rabbits              0.429645
+                                               pup              0.424266
+                                          doberman              0.423172
+                                            piglet              0.418467
+                                            poodle              0.416896
+                                           raccoon              0.416171
+                                          miaowing              0.413297
+                                           hamster              0.411372
+                                        pomeranian              0.409275
+                                              pets              0.407243
+                                            possum              0.405633
+                                        weimaraner              0.404375
+                                              cute              0.402268
+                                         dachshund              0.400153
+                                               paw              0.396394
+                                              mutt              0.396294
+                                            parrot              0.394432
+Enter word or sentence (EXIT to break): she
+
+Word: she  Position in vocabulary: 66
+
+                                              Word       Cosine distance
+------------------------------------------------------------------------
+                                               her              0.823957
+                                           herself              0.750137
+                                            mother              0.677359
+                                           husband              0.661378
+                                             woman              0.658613
+                                                he              0.651899
+                                          daughter              0.638027
+                                              hers              0.623433
+                                              girl              0.599669
+                                       grandmother              0.589814
+                                                me              0.560582
+                                           someone              0.555402
+                                               him              0.552386
+                                               mum              0.548392
+                                                my              0.546352
+                                         boyfriend              0.543404
+                                               mrs              0.536516
+                                             never              0.528523
+                                            sister              0.520982
+                                                 i              0.515458
+                                            friend              0.514627
+                                               mom              0.514259
+                                              wife              0.514083
+                                            father              0.505666
+                                          teenager              0.503387
+                                              aunt              0.501234
+                                                ms              0.485375
+                                               dad              0.482212
+                                            myself              0.476098
+                                            doctor              0.471775
+                                              when              0.464465
+                                               boy              0.463748
+                                        girlfriend              0.463223
+                                          somebody              0.462118
+                                            couple              0.460577
+                                              baby              0.460277
+                                             child              0.458793
+                                           toddler              0.456842
+                                               son              0.455016
+                                              knew              0.454775
+Enter word or sentence (EXIT to break): like
+
+Word: like  Position in vocabulary: 96
+
+                                              Word       Cosine distance
+------------------------------------------------------------------------
+                                             weird              0.629930
+                                            really              0.608489
+                                             maybe              0.604746
+                                             crazy              0.584595
+                                             silly              0.572092
+                                            pretty              0.569550
+                                              kind              0.565767
+                                             stuff              0.564091
+                                            always              0.562470
+                                        everywhere              0.559016
+                                              nice              0.551446
+                                               odd              0.550257
+                                              sort              0.549986
+                                           imagine              0.546442
+                                             likes              0.544746
+                                               you              0.538415
+                                          nowadays              0.538388
+                                           strange              0.533352
+                                             scary              0.532432
+                                           anymore              0.528881
+                                            wonder              0.525454
+                                               don              0.523555
+                                               lot              0.520899
+                                             guess              0.520767
+                                           suppose              0.520716
+                                                 ?              0.520621
+                                                so              0.520231
+                                               bit              0.519607
+                                              cute              0.516129
+                                              know              0.516075
+                                         basically              0.514041
+                                              look              0.511510
+                                              seem              0.510996
+                                             quite              0.510903
+                                          remember              0.509511
+                                           pretend              0.508604
+                                            forget              0.507725
+                                          actually              0.507283
+                                              good              0.505836
+                                              okay              0.505076
+Enter word or sentence (EXIT to break): EXIT
+(base) vedantsahai18@Vedantsahai18:~/word2vec/trunk$
