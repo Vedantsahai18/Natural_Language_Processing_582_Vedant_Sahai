@@ -359,6 +359,26 @@ void ReadVocab() {
   fclose(fin);
 }
 
+/*
+
+InitNet() which initializes the neural network utilized for training a word embedding model. 
+The functions sets up the weights and biases of the network and makes a Huffman Binary tree for use in hierarchical softmax (HS).
+
+Here is an outline of what the code does:
+
+1. The capability introduces the irregular seed next_random to 1.
+
+2. The 'posix_memalign' function is utilized to allot memory for the weight lattices syn0, syn1, and syn1neg. The 'posix_memalign' function adjusts the designated memory to a 128-byte limit to increment effectiveness in loading the data. 
+
+3. If hierarchical softmax (HS) is utilized, syn1 is allocated and initialized to zero for use in the HS enhancement.
+
+4. If negative sampling is utilized ('negative' is greater than 0), 'syn1neg' is allocated and initialized to zero for use in negative sampling optimization.
+
+5. The weight matrix syn0 is initialized with random values. layer1_size is the size of the secret layer.
+
+6. Function CreateBinaryTree() is used to make the Huffman binary tree for use in hierarchical softmax optimization.
+
+*/
 void InitNet() {
   long long a, b;
   unsigned long long next_random = 1;
