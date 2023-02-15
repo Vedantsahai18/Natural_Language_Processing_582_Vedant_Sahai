@@ -822,14 +822,14 @@ int main(int argc, char **argv) {
   return 0;
 }
 /*
-CBOW (Continuous Bag of Words) is a popular word embedding method used in natural language processing. Here's how it works:
+CBOW (Continuous Bag of Words) is a popular word embedding method used in natural language processing. The following is a brief overview of the CBOW model:
 
 Compose context embeddings: 
 CBOW creates word embeddings by considering the context words surrounding a target word. 
 The model takes a fixed-size context window around a target word and averages the embeddings of the context words to obtain a context embedding representation.
 
 Compute word probability given context: 
-CBOW then uses the context embedding representation to predict the target word. 
+It uses the context embedding representation to predict the target word. 
 This is done by feeding the context embedding into a neural network that outputs a probability distribution over all words in the vocabulary. 
 The target word is then selected based on the highest probability.
 
@@ -844,6 +844,5 @@ the dimensionality of the embeddings, the number of negative samples, the learni
 
 Input format: 
 CBOW requires text input in the form of a sequence of words. 
-The input text can be preprocessed to remove stop words, lowercase all words, and tokenize the text into individual words. 
 The input text can then be used to generate pairs of target words and their corresponding context words, which are used to train the model.
 */
