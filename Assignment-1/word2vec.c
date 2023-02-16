@@ -57,11 +57,9 @@ The function begins by designating memory for the table by using malloc.
 It then computes the total frequency of all words (raised to the power of 0.75) in the training corpus, stored in train_words_pow.
 
 The loop variable i monitors the ongoing word in the vocab, and d1 monitors the accumulated frequency of words seen up until this point.
-The loop goes on until all elements of the table have been filled.
-
-At every iteration of the loop, the current word in the vocab is added to the table, and if the cumulative 
-frequency has exceeded the current threshold (determined as a negligible portion of the table size), the following word in the vocab is chosen.
-This cycle goes on until the whole table has been filled.
+The loop goes on until all elements of the table have been filled.At every iteration of the loop, the current word in the vocab is added to the table, 
+and if the cumulative frequency has exceeded the current threshold (determined as a negligible portion of the table size), 
+the following word in the vocab is chosen. This cycle goes on until the whole table has been filled.
 
 The end product is a table that contains a randomly chosen subset of words from the training corpus, 
 with more frequent words having a higher likelihood of being chosen.
@@ -369,7 +367,8 @@ Here is an outline of what the code does:
 
 1. The capability introduces the irregular seed next_random to 1.
 
-2. The 'posix_memalign' function is utilized to allot memory for the weight lattices syn0, syn1, and syn1neg. The 'posix_memalign' function adjusts the designated memory to a 128-byte limit to increment effectiveness in loading the data. 
+2. The 'posix_memalign' function is utilized to allot memory for the weight matrices syn0, syn1, and syn1neg. 
+   The 'posix_memalign' function adjusts the designated memory to a 128-byte limit. 
 
 3. If hierarchical softmax (HS) is utilized, syn1 is allocated and initialized to zero for use in the HS enhancement.
 
@@ -480,22 +479,24 @@ void *TrainModelThread(void *id) {
     The CBOW code works in a following manner:
 
     1. Input to Hidden Layer Computation (in -> hidden) -
-    A sliding window around the current word is used as an input to the network. 
-    Representation of each of these words is added to a hidden layer and the average of the representations is taken.
+    A sliding window for the current word is used as an input to the hidden network. 
+    Representation of each of these words is added to a hidden layer and the average is calculated.
     
     2. Hidden To Output Layer Computation using Hierarchical Softmax (hidden -> output)-
-    For every word in the vocab, the dot product is taken between the hidden layer representation and the corresponding weights to calculate the output layer. 
-    The result is transformed using an exponential function to produce a probability value, which is compared to the actual label (either 1 if the word is the target word or 0 if it's a negative sample)  to calculate the error gradient. Finally, we then update the weights based on the above-calculated layer.
+    For every word in the vocab, the dot product is taken between the hidden layer value and the corresponding weights to calculate the output layer. 
+    The result is transformed using an activation function to produce a probability value, which is compared to the actual label (either 1 if the word is the target word or 0 if it's a negative sample) 
+    to calculate the error gradient. Finally, we then update the weights based on the above-calculated layer.
     
     3. Hidden To Output Layer Computation using Negative Sampling (NEGATIVE SAMPLING)-
     For negative sampling, a random word is selected and used to calculate the dot product with the hidden layer representation. 
-    The result is transformed to produce a probability value, and the error gradient is calculated.  The weights between the hidden layer and the output layer for the negative sample are then updated based on this error.
+    Just like the Hidden to Output Layer probability value and the error gradient is calculated.  
+    The weights between the hidden layer and the output layer for the negative sample are then updated based on this error.
 
     4. Hidden To Input Layer Computation (hidden -> in)-
     This layer makes sure that the backpropagation of the hidden layer error is systematically updated to the input layer 
     which in return updates the representations of the words in the input window.
 
-    By repeating this training process for larger words, the network learns how to create proper word embeddings
+    The process is repeated for every word in the sentence.
     
     */
 
@@ -822,7 +823,7 @@ int main(int argc, char **argv) {
   return 0;
 }
 /*
-CBOW (Continuous Bag of Words) is a popular word embedding method used in natural language processing. The following is a brief overview of the CBOW model:
+CBOW (Continuous Bag of Words) model's brief overview is as follows:
 
 Compose context embeddings: 
 CBOW creates word embeddings by considering the context words surrounding a target word. 
@@ -837,10 +838,6 @@ Implement negative sampling:
 To train the model, CBOW uses a technique called negative sampling. 
 This involves randomly sampling negative examples (non-target words) from the vocabulary and using these examples to update the model's parameters. 
 The objective of negative sampling is to learn the difference between positive (target) examples and negative examples.
-
-Other parameters: 
-Apart from the word embeddings and context embeddings, CBOW uses several other parameters, including the size of the context window, 
-the dimensionality of the embeddings, the number of negative samples, the learning rate, and the number of epochs.
 
 Input format: 
 CBOW requires text input in the form of a sequence of words. 
